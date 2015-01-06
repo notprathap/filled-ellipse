@@ -73,11 +73,23 @@ bool loadVertices()
     firstSetOfpoints = ellipse.getFirstSetOfPoints();
 
     for (int i = 0; i < firstSetOfpoints.size(); i++){
-        LVertexPos2D point;
-        point.x = cx;
-        point.y = cy;
-        points.push_back(point);
-        points.push_back(firstSetOfpoints[i]);
+        // origin of the ellipse
+        LVertexPos2D point1;
+        point1.x = cx;
+        point1.y = cy;
+        points.push_back(point1);
+
+        // second vertex of the triangle
+        LVertexPos2D point2;
+        point2.x = firstSetOfpoints[i].x;
+        point2.y = firstSetOfpoints[i].y + 3;
+        points.push_back(point2);
+
+        // third vertex of the triangle
+        LVertexPos2D point3;
+        point3.x = firstSetOfpoints[i].x;
+        point3.y = firstSetOfpoints[i].y - 3;
+        points.push_back(point3);
     }
 
     // load second set of points
@@ -85,11 +97,23 @@ bool loadVertices()
     secondSetOfpoints = ellipse.getSecondSetOfPoints();
 
     for (int i = 0; i < secondSetOfpoints.size(); i++){
-        LVertexPos2D point;
-        point.x = cx;
-        point.y = cy;
-        points.push_back(point);
-        points.push_back(secondSetOfpoints[i]);
+        // origin of the ellipse
+        LVertexPos2D point1;
+        point1.x = cx;
+        point1.y = cy;
+        points.push_back(point1);
+
+        // second vertex of the triangle
+        LVertexPos2D point2;
+        point2.x = secondSetOfpoints[i].x + 3;
+        point2.y = secondSetOfpoints[i].y;
+        points.push_back(point2);
+
+        // third vertex of the triangle
+        LVertexPos2D point3;
+        point3.x = secondSetOfpoints[i].x - 3;
+        point3.y = secondSetOfpoints[i].y;
+        points.push_back(point3);
     }
 
     // set indices
@@ -139,8 +163,8 @@ void render()
         //Draw points using vertex data and index data
 		glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, gIndexBuffer );
 
-        // plot the points
-        glDrawElements( GL_LINES, points.size(), GL_UNSIGNED_INT, NULL );
+        // Draw the triangles
+        glDrawElements( GL_TRIANGLES, points.size(), GL_UNSIGNED_INT, NULL );
 
     //Disable vertex arrays
     glDisableClientState( GL_VERTEX_ARRAY );

@@ -1,6 +1,5 @@
-/*This source code copyrighted by Lazy Foo' Productions (2004-2013)
-and may not be redistributed without written permission.*/
-//Version: 017
+/*This piece of code has been built on top of Lazy Foo' Productions
+(http://lazyfoo.net/)*/
 
 #include "LUtil.h"
 #include "Ellipse.h"

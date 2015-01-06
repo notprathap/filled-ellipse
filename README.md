@@ -13,7 +13,7 @@ Just run make, and execute the drawEllipse executable.
 
 If you are looking for just a hollow ellipse, you could get it [here](https://github.com/notprathap/filled-ellipse/releases/tag/filled-ellipse-with-triangles)
 
-If you are looking for the implementation with lines instead of traingles, you could get it [here](https://github.com/notprathap/filled-ellipse/releases/tag/filled-ellipse-with-lines) - Please note all pixels are painted within the ellipse, and hence the approach with traingles in the final version
+If you are looking for the implementation with lines instead of triangles, you could get it [here](https://github.com/notprathap/filled-ellipse/releases/tag/filled-ellipse-with-lines) - Please note all pixels are painted within the ellipse, and hence the approach with traingles in the final version
 
 ####Credits:
 - [Lazy Foo' Productions](http://lazyfoo.net/tutorials/OpenGL/index.php)

@@ -11,7 +11,7 @@ An C++ OpenGL implementation for drawing filled ellipses, based on a fast Bresen
 ####Instructions:
 Just run make, and execute the drawEllipse executable.
 
-If you are looking for just a hollow ellipse, you could get it [here](https://github.com/notprathap/filled-ellipse/releases/tag/filled-ellipse-with-triangles)
+If you are looking for just a hollow ellipse, you could get it [here](https://github.com/notprathap/filled-ellipse/releases/tag/hollow-ellipse)
 
 If you are looking for an implementation with lines, you could get it [here](https://github.com/notprathap/filled-ellipse/releases/tag/filled-ellipse-with-lines) - Please note not all pixels are painted within the ellipse, and hence the approach with triangles and quads
 

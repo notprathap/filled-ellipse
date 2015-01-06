@@ -62,18 +62,35 @@ bool initGL()
 
 bool loadVertices()
 {
+    long cx = SCREEN_WIDTH * 1.f / 2.f;
+    long cy = SCREEN_HEIGHT * 1.f / 2.f;
+
     // initialize ellipse
-    Ellipse::Ellipse ellipse(100,50, SCREEN_WIDTH * 1.f / 2.f, SCREEN_HEIGHT * 1.f / 2.f);
+    Ellipse::Ellipse ellipse(100,50, cx, cy );
     
     // load first set of points
-    points = ellipse.getFirstSetOfPoints();
+    std::vector<LVertexPos2D> firstSetOfpoints;
+    firstSetOfpoints = ellipse.getFirstSetOfPoints();
+
+    for (int i = 0; i < firstSetOfpoints.size(); i++){
+        LVertexPos2D point;
+        point.x = cx;
+        point.y = cy;
+        points.push_back(point);
+        points.push_back(firstSetOfpoints[i]);
+    }
 
     // load second set of points
     std::vector<LVertexPos2D> secondSetOfpoints;
     secondSetOfpoints = ellipse.getSecondSetOfPoints();
 
-    // merge the points
-    points.insert(points.end(), secondSetOfpoints.begin(), secondSetOfpoints.end());
+    for (int i = 0; i < secondSetOfpoints.size(); i++){
+        LVertexPos2D point;
+        point.x = cx;
+        point.y = cy;
+        points.push_back(point);
+        points.push_back(secondSetOfpoints[i]);
+    }
 
     // set indices
     for (int i = 0; i < points.size(); i++){
@@ -123,7 +140,7 @@ void render()
 		glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, gIndexBuffer );
 
         // plot the points
-        glDrawElements( GL_POINTS, points.size(), GL_UNSIGNED_INT, NULL );
+        glDrawElements( GL_LINES, points.size(), GL_UNSIGNED_INT, NULL );
 
     //Disable vertex arrays
     glDisableClientState( GL_VERTEX_ARRAY );

@@ -15,7 +15,7 @@ If you are looking for just a hollow ellipse, you could get it [here](https://gi
 
 If you are looking for an implementation with lines, you could get it [here](https://github.com/notprathap/filled-ellipse/releases/tag/filled-ellipse-with-lines) - Please note not all pixels are painted within the ellipse, and hence the approach with triangles and quads
 
-If you are looking for an implementation with traingles, you could get it [here](https://github.com/notprathap/filled-ellipse/releases/tag/filled-ellipse-with-triangles)
+If you are looking for an implementation with triangles, you could get it [here](https://github.com/notprathap/filled-ellipse/releases/tag/filled-ellipse-with-triangles)
 
 ####Credits:
 - [Lazy Foo' Productions](http://lazyfoo.net/tutorials/OpenGL/index.php)

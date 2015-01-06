@@ -1,7 +1,7 @@
 #A fast Bresenham type algorithm for drawing filled ellipses
 ----
 
-An C++ openGL implementation for drawing filled ellipses, based on a fast bresenham type algorithm written by [Mr. John Kennedy](https://web.archive.org/web/20120225095359/http://homepage.smc.edu/kennedy_john/belipse.pdf)
+An C++ OpenGL implementation for drawing filled ellipses, based on a fast bresenham type algorithm written by [Mr. John Kennedy](https://web.archive.org/web/20120225095359/http://homepage.smc.edu/kennedy_john/belipse.pdf)
 
 ####Dependencies:
 - OpenGL 2.1

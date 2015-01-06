@@ -1,5 +1,6 @@
-/*This piece of code has been built on top of Lazy Foo' Productions
-(http://lazyfoo.net/)*/
+/*This source code copyrighted by Lazy Foo' Productions (2004-2013)
+and may not be redistributed without written permission.*/
+//Version: 017
 
 #include "LUtil.h"
 #include "Ellipse.h"
@@ -61,59 +62,18 @@ bool initGL()
 
 bool loadVertices()
 {
-    long cx = SCREEN_WIDTH * 1.f / 2.f;
-    long cy = SCREEN_HEIGHT * 1.f / 2.f;
-
     // initialize ellipse
-    Ellipse::Ellipse ellipse(100,50, cx, cy );
+    Ellipse::Ellipse ellipse(100,50, SCREEN_WIDTH * 1.f / 2.f, SCREEN_HEIGHT * 1.f / 2.f);
     
     // load first set of points
-    std::vector<LVertexPos2D> firstSetOfpoints;
-    firstSetOfpoints = ellipse.getFirstSetOfPoints();
-
-    for (int i = 0; i < firstSetOfpoints.size(); i++){
-        // origin of the ellipse
-        LVertexPos2D point1;
-        point1.x = cx;
-        point1.y = cy;
-        points.push_back(point1);
-
-        // second vertex of the triangle
-        LVertexPos2D point2;
-        point2.x = firstSetOfpoints[i].x;
-        point2.y = firstSetOfpoints[i].y + 3;
-        points.push_back(point2);
-
-        // third vertex of the triangle
-        LVertexPos2D point3;
-        point3.x = firstSetOfpoints[i].x;
-        point3.y = firstSetOfpoints[i].y - 3;
-        points.push_back(point3);
-    }
+    points = ellipse.getFirstSetOfPoints();
 
     // load second set of points
     std::vector<LVertexPos2D> secondSetOfpoints;
     secondSetOfpoints = ellipse.getSecondSetOfPoints();
 
-    for (int i = 0; i < secondSetOfpoints.size(); i++){
-        // origin of the ellipse
-        LVertexPos2D point1;
-        point1.x = cx;
-        point1.y = cy;
-        points.push_back(point1);
-
-        // second vertex of the triangle
-        LVertexPos2D point2;
-        point2.x = secondSetOfpoints[i].x + 3;
-        point2.y = secondSetOfpoints[i].y;
-        points.push_back(point2);
-
-        // third vertex of the triangle
-        LVertexPos2D point3;
-        point3.x = secondSetOfpoints[i].x - 3;
-        point3.y = secondSetOfpoints[i].y;
-        points.push_back(point3);
-    }
+    // merge the points
+    points.insert(points.end(), secondSetOfpoints.begin(), secondSetOfpoints.end());
 
     // set indices
     for (int i = 0; i < points.size(); i++){
@@ -156,14 +116,14 @@ void render()
     glEnableClientState( GL_VERTEX_ARRAY );
 
         //Set vertex data
-		glBindBuffer( GL_ARRAY_BUFFER, gVertexBuffer );
+        glBindBuffer( GL_ARRAY_BUFFER, gVertexBuffer );
         glVertexPointer( 2, GL_FLOAT, 0, NULL );
 
         //Draw points using vertex data and index data
-		glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, gIndexBuffer );
+        glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, gIndexBuffer );
 
-        // Draw the triangles
-        glDrawElements( GL_TRIANGLES, points.size(), GL_UNSIGNED_INT, NULL );
+        // Draw Quads
+        glDrawElements( GL_QUADS, points.size(), GL_UNSIGNED_INT, NULL );
 
     //Disable vertex arrays
     glDisableClientState( GL_VERTEX_ARRAY );
